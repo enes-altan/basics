@@ -1,4 +1,5 @@
 <?php
+
 class Person
 {
     //Özellikler
@@ -22,17 +23,38 @@ class Person
     /*
      * Methodlar
      */
-    public  function getFullName(){
-        return $this->firstName." ".$this->lastName;
+    public function getFullName()
+    {
+        return $this->firstName . " " . $this->lastName;
     }
 
-    public function getPhone(){
+    public function getPhone()
+    {
         return self::PHONE; // self sýnýfýn kendisini baz alýr
+    }
+
+    public function calculateSalary(float $salary , $experience):float{
+        return ($experience * 100)+$salary;
+    }
+
+
+    public function __construct()
+    {
+        //Sýnýf çaðrýldýðýnda çalýþacak ilk method
+        echo "Construct(Kurucu) Method çalýþtýr.<br>";
+
+    }
+
+    public function __destruct()
+    {
+        // //Sýnýf çalýþmasý bittiðinde çalýþacak son method
+        echo "Destruct(Yýkýcý) Method çalýþtýr.<br>";
     }
 }
 $person = new Person();
-echo $person->firstName." ".$person->lastName . PHP_EOL;// PHP_EOL -> /n;
-echo $person::PHONE. PHP_EOL; // sabitleri bu þekilde çaðrýlýr.
+echo $person->firstName . " " . $person->lastName . PHP_EOL;// PHP_EOL -> /n;
+echo $person::PHONE . PHP_EOL; // sabitleri bu þekilde çaðrýlýr.
 
 echo $person->getFullName();
 echo $person->getPhone();
+echo $person->calculateSalary('1000','5');
